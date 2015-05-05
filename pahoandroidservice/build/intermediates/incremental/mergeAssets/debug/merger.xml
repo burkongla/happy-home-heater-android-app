@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Utvikling\Prosjekter\TVLauncher\HappyHomeHeater\pahoandroidservice\src\main\assets"><file name="file" path="C:\Utvikling\Prosjekter\TVLauncher\HappyHomeHeater\pahoandroidservice\src\main\assets\file"/></source></dataSet><dataSet config="debug"><source path="C:\Utvikling\Prosjekter\TVLauncher\HappyHomeHeater\pahoandroidservice\src\debug\assets"/></dataSet></merger>

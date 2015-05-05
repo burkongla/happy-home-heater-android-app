@@ -1,0 +1,78 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* build.xml
+* custom_rules.xml
+* exportjar.xml
+* ic_launcher-web.png
+* org.eclipse.paho.android.service.iml
+* pom.xml
+* proguard-project.txt
+* target\
+* target\classes\
+* target\classes\org\
+* target\classes\org\eclipse\
+* target\classes\org\eclipse\paho\
+* target\classes\org\eclipse\paho\android\
+* target\classes\org\eclipse\paho\android\service\
+* target\classes\org\eclipse\paho\android\service\AlarmPingSender$AlarmReceiver$1.class
+* target\classes\org\eclipse\paho\android\service\AlarmPingSender$AlarmReceiver.class
+* target\classes\org\eclipse\paho\android\service\AlarmPingSender.class
+* target\classes\org\eclipse\paho\android\service\DatabaseMessageStore$1.class
+* target\classes\org\eclipse\paho\android\service\DatabaseMessageStore$DbStoredData.class
+* target\classes\org\eclipse\paho\android\service\DatabaseMessageStore$MQTTDatabaseHelper.class
+* target\classes\org\eclipse\paho\android\service\DatabaseMessageStore$MqttMessageHack.class
+* target\classes\org\eclipse\paho\android\service\DatabaseMessageStore.class
+* target\classes\org\eclipse\paho\android\service\MessageStore$StoredMessage.class
+* target\classes\org\eclipse\paho\android\service\MessageStore.class
+* target\classes\org\eclipse\paho\android\service\MqttAndroidClient$Ack.class
+* target\classes\org\eclipse\paho\android\service\MqttAndroidClient$MyServiceConnection.class
+* target\classes\org\eclipse\paho\android\service\MqttAndroidClient.class
+* target\classes\org\eclipse\paho\android\service\MqttConnection$1.class
+* target\classes\org\eclipse\paho\android\service\MqttConnection$2.class
+* target\classes\org\eclipse\paho\android\service\MqttConnection$3.class
+* target\classes\org\eclipse\paho\android\service\MqttConnection$MqttConnectionListener.class
+* target\classes\org\eclipse\paho\android\service\MqttConnection.class
+* target\classes\org\eclipse\paho\android\service\MqttDeliveryTokenAndroid.class
+* target\classes\org\eclipse\paho\android\service\MqttService$BackgroundDataPreferenceReceiver.class
+* target\classes\org\eclipse\paho\android\service\MqttService$NetworkConnectionIntentReceiver.class
+* target\classes\org\eclipse\paho\android\service\MqttService.class
+* target\classes\org\eclipse\paho\android\service\MqttServiceBinder.class
+* target\classes\org\eclipse\paho\android\service\MqttServiceConstants.class
+* target\classes\org\eclipse\paho\android\service\MqttTokenAndroid.class
+* target\classes\org\eclipse\paho\android\service\MqttTraceHandler.class
+* target\classes\org\eclipse\paho\android\service\ParcelableMqttMessage$1.class
+* target\classes\org\eclipse\paho\android\service\ParcelableMqttMessage.class
+* target\classes\org\eclipse\paho\android\service\Status.class
+* target\classes\org\eclipse\paho\android\service\package.html
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => pahoandroidservice\src\main\AndroidManifest.xml
+* assets\ => pahoandroidservice\src\main\assets\
+* res\ => pahoandroidservice\src\main\res\
+* src\ => pahoandroidservice\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
