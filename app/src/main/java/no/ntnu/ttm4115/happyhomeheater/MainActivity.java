@@ -70,8 +70,10 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
     private int temp;
 
     private Connection connection;
+    private ChangeListener changeListener = new ChangeListener();
     private ResponseReceiver receiver;
     MqttAndroidClient client;
+    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
 
 
     //Geofence viarables:
@@ -99,6 +101,19 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
         registerReceiver(receiver, filter);
 
         sharedPref = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        prefListener=new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Log.d("Note", "sharePrefListener");
+                if (key.equals(CurrentTemp)) {
+                    CurrTemp = (TextView) findViewById(R.id.currentTemperature);
+                    String ctemp = sharedPref.getString(CurrentTemp, "20°");
+                    CurrTemp.setText(ctemp);
+                    //CurrTemp.invalidate();
+                }
+            }
+        };
+        sharedPref.registerOnSharedPreferenceChangeListener(prefListener);
 
         if (!isGooglePlayServicesAvailable()) {
             Log.e(TAG, "Google Play services unavailable.");
@@ -305,7 +320,12 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
         createGeofences();
         if (OnOffSwitch.isChecked()) {
             setStatusText("Heating home");
-            mqttPublish("Desired: " + "20");
+            if (sharedPref.contains(DesiredTemp)) {
+                temp = sharedPref.getInt(DesiredTemp, 20);
+                mqttPublish("Desired: " + temp);
+            }
+
+            mqttSubscribe();
         }
     }
 
@@ -328,7 +348,6 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
         } catch (MqttException e) {
             e.printStackTrace();
         }
-        mqttSubscribe();
     }
 
     public void mqttDisconnect() {
@@ -367,7 +386,7 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
         Log.d("Message", message);
 
         try {
-            client.publish(topic, message.getBytes(), 2, false, null, new ActionListener(this, Action.PUBLISH, clientHandle, args));
+            client.publish("hhh/server", message.getBytes(), 2, false, null, new ActionListener(this, Action.PUBLISH, clientHandle, args));
         }
         catch (MqttSecurityException e) {
             Log.e(this.getClass().getCanonicalName(), "Failed to publish a messged from the client with the handle " + clientHandle, e);

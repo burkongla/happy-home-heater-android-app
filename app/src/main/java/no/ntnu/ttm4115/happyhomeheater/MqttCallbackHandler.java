@@ -62,14 +62,13 @@ public class MqttCallbackHandler implements MqttCallback {
      */
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
-        Log.d("MessageArv", message.getPayload().toString());
+        Log.d("MessageArv", new String(message.getPayload()));
         sharedPref = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-
         String[] msg = new String(message.getPayload()).split("\\s+");
         if (msg[0].equals("Current:")) {
             //this.CurrentTemperature = Float.valueOf(message[1]);
             String current_temp;
-            current_temp = msg[1] + " \u2109";
+            current_temp = msg[1] + "\u00b0";
 
             Intent intent = new Intent();
             intent.setClassName(context, "no.ntnu.ttm4115.happyhomeheater.ConnectionDetails");
@@ -78,6 +77,7 @@ public class MqttCallbackHandler implements MqttCallback {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString("currentTempKey", current_temp);
             editor.commit();
+            Log.d("Current", current_temp);
             //notify the user
             Notify.notifcation(context, current_temp, intent, "Current temperature:");
 
